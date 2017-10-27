@@ -9,7 +9,7 @@ public class Test_DB {
         //ree.createNewDB();
         ree.useDB("ThisDatabase");
         //ree.createTable("MyTable");
-        ree.insertData("MyTable");
-
+        //ree.insertData("MyTable");
+        ree.selectFromTable("MyTable");
     }
 }

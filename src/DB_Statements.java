@@ -80,7 +80,7 @@ public class DB_Statements {
         String query = "insert into "+tableName+" ("+
                 "myName, address) "+
                 "values ('Douglas', 'My address'), "+
-                "('Bub ', 'His address'), " +
+                "('Bub ', 'His address'), " + //Man skal altid have 4 chars
                 "('REEEE', 'RES address')";
         try {
             //Connection
@@ -108,11 +108,11 @@ public class DB_Statements {
             //"build a table"
             System.out.println("\nid\t\tmyName\t\taddress\n________________________________");
             //get data
-            if (rs.next()){
+            while (rs.next()){
                 int id = rs.getInt(1);//returns the id / first collumn
                 String myName = rs.getString("myName");//returns the myName
                 String address = rs.getString("address"); // returns the address
-                System.out.println("id"+id+"\t\t"+myName+"\t\t"+address);
+                System.out.println(id+"\t\t"+myName+"\t\t"+address);
 
             }
 
