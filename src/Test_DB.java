@@ -6,6 +6,10 @@ public class Test_DB {
         //DB_Connector k = new DB_Connector();
         //DB_Connector.connect();
         DB_Statements ree = new DB_Statements();
-        ree.createNewDB();
+        //ree.createNewDB();
+        ree.useDB("ThisDatabase");
+        //ree.createTable("MyTable");
+        ree.insertData("MyTable");
+
     }
 }

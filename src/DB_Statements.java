@@ -1,4 +1,5 @@
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -10,6 +11,11 @@ public class DB_Statements {
 
     //Declaring a connection
     private static Connection con = DB_Connector.connect();
+
+    //Declare a result set
+    private static ResultSet rs = null;
+
+
 
     //Create new DataBase using method
     public void createNewDB(String DB_Name) {
@@ -34,7 +40,7 @@ public class DB_Statements {
     //Method to use a database
     public void useDB(String DB_Name) {
         //statement
-        String query = "use" + DB_Name;
+        String query = "use " + DB_Name;
 
         try {
             //connection
@@ -68,5 +74,53 @@ public class DB_Statements {
         }
     }
 
-    
+    //Method to insert data
+    public void  insertData(String tableName){
+        //SQL query
+        String query = "insert into "+tableName+" ("+
+                "myName, address) "+
+                "values ('Douglas', 'My address'), "+
+                "('Bub ', 'His address'), " +
+                "('REEEE', 'RES address')";
+        try {
+            //Connection
+            stat = con.createStatement();
+            //execute
+            stat.executeUpdate(query);
+            System.out.println("\n --- Data inserted into table: " + tableName + " ---");
+
+        }
+        catch (SQLException ex){
+            System.out.println("\n --- Data could not be inserted "+tableName+ " ---");
+            ex.printStackTrace();
+        }
+    }
+    /*method to read/show data from table*/
+    public void selectFromTable(String tableName){
+        //SQL query
+        String query = "select * from "+tableName;
+        //
+        try{
+            //connection
+            stat = con.createStatement();
+            //execute
+            rs = stat.executeQuery(query);
+            //"build a table"
+            System.out.println("\nid\t\tmyName\t\taddress\n________________________________");
+            //get data
+            if (rs.next()){
+                int id = rs.getInt(1);//returns the id / first collumn
+                String myName = rs.getString("myName");//returns the myName
+                String address = rs.getString("address"); // returns the address
+                System.out.println("id"+id+"\t\t"+myName+"\t\t"+address);
+
+            }
+
+        }
+        catch(SQLException ex){
+            System.out.println("\n --- query didnt execute ---");
+            ex.printStackTrace();
+        }
+    }
+
 }
