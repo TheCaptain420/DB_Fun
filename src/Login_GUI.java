@@ -54,7 +54,7 @@ public class Login_GUI {
 
         //create connect button
         btnConnect = new JButton("Con ya retard");
-        btnConnect.setBounds(148,172,117,290);
+        btnConnect.setBounds(148,172,117,29);
         frame.getContentPane().add(btnConnect);
 
         //create btn action
@@ -65,7 +65,7 @@ public class Login_GUI {
                 try{
                     String username = userNameField.getText();
                     String password = new String (passwordField.getPassword());
-                    if (stat.checkLogin(username,password)){ JOptionPane.showMessageDialog(null,"User founderino\nAcces graterino");
+                    if (stat.checkLogin(username,password)){ JOptionPane.showMessageDialog(null,"User founderino\nAcces graterino"); frame.setVisible(false);
                     }else{JOptionPane.showMessageDialog(null,"Ya done Fcked up\nAccess Denied");}
                 }catch (Exception ex){
                     JOptionPane.showMessageDialog(null,ex);

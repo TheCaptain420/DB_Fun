@@ -122,5 +122,24 @@ public class DB_Statements {
             ex.printStackTrace();
         }
     }
+    public Boolean checkLogin(String username, String password){
+        boolean check = false;
+
+        // SQL statement
+        String query = "select * from thisdatabase.user where username = '"+ username+"' and password = '"+password+"' ";
+        try{
+            stat = con.createStatement();
+            rs = stat.executeQuery(query);
+            while(rs.next()){
+                check = true;
+                System.out.println("\n --- It works ---");
+            }
+        }catch (SQLException e) {
+            System.out.println("\n --- Darn!! ---");
+            e.printStackTrace();
+        }
+        return check;
+    }
+
 
 }
