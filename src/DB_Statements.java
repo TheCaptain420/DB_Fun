@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DB_Statements {
     /*Her kan man: Create, Update, modify, delete(DDL = data definition language)*/
@@ -14,6 +11,9 @@ public class DB_Statements {
 
     //Declare a result set
     private static ResultSet rs = null;
+
+    //Declare a PreparedStatement
+    private static PreparedStatement pst = null;
 
 
 
@@ -122,18 +122,26 @@ public class DB_Statements {
             ex.printStackTrace();
         }
     }
+    //Method to check for user credientials
     public Boolean checkLogin(String username, String password){
         boolean check = false;
 
         // SQL statement
-        String query = "select * from thisdatabase.user where username = '"+ username+"' and password = '"+password+"' ";
+        String query = "select * from thisdatabase.user where username = (?) and password =(?)";
+
         try{
-            stat = con.createStatement();
-            rs = stat.executeQuery(query);
+            //stat = con.createStatement();
+            pst = con.prepareStatement(query);
+            //rs = stat.executeQuery(query);
+            pst.setString(1,username);//Henter username fra pst
+            pst.setString(2,password);
+            rs = pst.executeQuery();
+            //Checker om info er "true", altså password/username
             while(rs.next()){
                 check = true;
                 System.out.println("\n --- It works ---");
             }
+
         }catch (SQLException e) {
             System.out.println("\n --- Darn!! ---");
             e.printStackTrace();

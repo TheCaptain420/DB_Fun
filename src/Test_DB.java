@@ -12,6 +12,7 @@ public class Test_DB {
         //ree.insertData("MyTable");
         //ree.selectFromTable("MyTable");
         Login_GUI gui = new Login_GUI();
+        // " or "='
 
     }
 }

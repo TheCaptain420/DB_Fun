@@ -65,7 +65,7 @@ public class Login_GUI {
                 try{
                     String username = userNameField.getText();
                     String password = new String (passwordField.getPassword());
-                    if (stat.checkLogin(username,password)){ JOptionPane.showMessageDialog(null,"User founderino\nAcces graterino"); frame.setVisible(false);
+                    if (stat.checkLogin(username,password)){ JOptionPane.showMessageDialog(null,"User founderino\nAccess graterino"); frame.setVisible(false);
                     }else{JOptionPane.showMessageDialog(null,"Ya done Fcked up\nAccess Denied");}
                 }catch (Exception ex){
                     JOptionPane.showMessageDialog(null,ex);
