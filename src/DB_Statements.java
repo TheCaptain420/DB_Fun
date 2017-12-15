@@ -31,7 +31,7 @@ public class DB_Statements {
             System.out.println("\n --- Database "+DB_Name+" created--");
         }
         catch (SQLException ex) {
-            //Handle SQL exceptions
+            //Handle SQL exceptions(ikke kender statement, ikke connected, )
             System.out.println("\n --- Statement did not execute ---");
             ex.printStackTrace();
         }
